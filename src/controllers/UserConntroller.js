@@ -7,14 +7,18 @@ const UserController = {
 
            const user = await User.create({ nome, email, idade });
 
-        } catch (error) {
-            return res.status(500).json({ msg: 'Contate o suporte'})
-        }
-
-        return res.status(200).json({
+           return res.status(200).json({
             msg: 'Usuário criado com sucesso',
             user
         });
+
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json({ msg: 'Contate o suporte'})  
+            
+        }
+
+      
     },
     update: async (req, res) => {
         try {
@@ -36,9 +40,9 @@ const UserController = {
 
             return res.status(200).json({
                 msg: 'Usuário atualizado com sucesso',
-                user
             }) 
         } catch (error) {
+            
             return res.status(500).json({ msg: 'Contate o suporte'})
         }
     },
